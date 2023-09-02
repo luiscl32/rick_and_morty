@@ -19,44 +19,56 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.linear,
-      child: GestureDetector(
-        onTap: onTap,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            width: double.infinity,
-            height: 120,
-            color: const Color(ColorPallete.secondary),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (type == 'ch')
-                  _Image(
-                    index: index,
-                  ),
-                if (type == 'loc' || type == 'ep')
-                  SizedBox(
-                    width: 100,
-                    height: 120,
-                    child: Center(
-                      child: Icon(
-                        type == 'loc' ? Icons.location_on : Icons.tv,
-                        size: 32,
-                        color: const Color(ColorPallete.title),
-                      ),
-                    ),
-                  ),
-                const SizedBox(
-                  width: 12,
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          width: double.infinity,
+          height: 120,
+          color: const Color(ColorPallete.secondary),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (type == 'ch')
+                _Image(
+                  index: index,
                 ),
-                _Description(text: text)
-              ],
-            ),
+              if (type == 'loc' || type == 'ep') _icon(type: type),
+              const SizedBox(
+                width: 12,
+              ),
+              _Description(
+                text: text,
+                type: type!,
+              )
+            ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _icon extends StatelessWidget {
+  const _icon({
+    super.key,
+    required this.type,
+  });
+
+  final String? type;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 120,
+      height: 120,
+      child: Center(
+        child: Icon(
+          type == 'loc' ? Icons.location_on : Icons.tv,
+          size: 32,
+          color: const Color(ColorPallete.title),
         ),
       ),
     );
@@ -65,14 +77,28 @@ class CustomCard extends StatelessWidget {
 
 class _Description extends StatelessWidget {
   const _Description({
-    super.key,
     required this.text,
+    required this.type,
   });
 
   final TextTheme text;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
+    String _getTextByType() {
+      switch (type) {
+        case 'ch':
+          return 'Status:';
+        case 'loc':
+          return 'Type:';
+        case 'ep':
+          return 'Number:';
+        default:
+          return '';
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -84,15 +110,42 @@ class _Description extends StatelessWidget {
             style: text.headlineSmall,
           ),
           const SizedBox(
-            height: 12,
+            height: 10,
           ),
           Text(
-            'alive',
-            style: text.bodyMedium!.copyWith(
-              color: const Color(ColorPallete.alive),
-              fontWeight: FontWeight.w800,
-            ),
-          )
+            _getTextByType(),
+            style: text.bodyMedium,
+          ),
+          if (type == 'ch')
+            Row(
+              children: [
+                Container(
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: const Color(ColorPallete.alive)),
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  'alive',
+                  style: text.bodyMedium!.copyWith(
+                    color: const Color(ColorPallete.title),
+                    fontWeight: FontWeight.w300,
+                  ),
+                )
+              ],
+            )
+          else
+            Text(
+              'data',
+              style: text.bodyMedium!.copyWith(
+                color: const Color(ColorPallete.title),
+                fontWeight: FontWeight.w300,
+              ),
+            )
         ],
       ),
     );
@@ -101,7 +154,6 @@ class _Description extends StatelessWidget {
 
 class _Image extends StatelessWidget {
   const _Image({
-    super.key,
     required this.index,
   });
 
@@ -112,7 +164,7 @@ class _Image extends StatelessWidget {
     return Hero(
       tag: index,
       child: SizedBox(
-        width: 100,
+        width: 120,
         height: 120,
         child: FadeInImage.memoryNetwork(
           placeholder: kTransparentImage,
