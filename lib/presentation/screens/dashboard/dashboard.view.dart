@@ -1,13 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/presentation/screens/screens.dart';
+import 'package:rick_and_morty/presentation/screens/dashboard/widgets/widgets.dart';
+import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 
-class DashboardView extends StatelessWidget {
+class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
+  State<DashboardView> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends State<DashboardView> {
+  int currentIndex = 0;
+
+  static const List<Widget> screens = [
+    CharactersPage(),
+    LocationsPage(),
+    EpisodesPage(),
+  ];
+
+  void onChangeOption(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('DashboardView'),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(ColorPallete.secondary),
+        title: Text(
+          'Rick & Morty',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+      ),
+      body: screens.elementAt(currentIndex),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) => onChangeOption(index!),
       ),
     );
   }

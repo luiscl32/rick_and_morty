@@ -5,6 +5,9 @@ class ScreenPaths {
   ScreenPaths._();
 
   static const String dashboard = '/dashboard';
+  static const String characters = '/characters';
+  static const String locations = '/locations';
+  static const String episodes = '/episodes';
 }
 
 class CustomRouter {
@@ -12,5 +15,8 @@ class CustomRouter {
 
   static Map<String, WidgetBuilder> routes = {
     ScreenPaths.dashboard: (context) => const DashboardPage(),
+    ScreenPaths.characters: (context) => const CharactersPage(),
+    ScreenPaths.locations: (context) => const LocationsPage(),
+    ScreenPaths.episodes: (context) => const EpisodesPage(),
   };
 }
