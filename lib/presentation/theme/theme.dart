@@ -24,6 +24,12 @@ class CustomTheme {
       headlineLarge: CustomText.titles,
       headlineMedium: CustomText.subTitles,
       headlineSmall: CustomText.titles,
+      titleLarge: CustomText.titles,
+      titleMedium: CustomText.subTitles,
+      titleSmall: CustomText.titles,
+      labelLarge: CustomText.titles,
+      labelMedium: CustomText.subTitles,
+      labelSmall: CustomText.titles,
     ),
   );
 }
