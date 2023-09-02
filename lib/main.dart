@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:rick_and_morty/presentation/theme/theme.dart';
 import 'package:rick_and_morty/router.dart';
 

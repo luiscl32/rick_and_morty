@@ -3,15 +3,17 @@ import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 
 import 'package:transparent_image/transparent_image.dart';
 
-class CharacterCard extends StatelessWidget {
-  const CharacterCard({
+class CustomCard extends StatelessWidget {
+  const CustomCard({
     super.key,
     required this.onTap,
     required this.index,
+    this.type = 'ch',
   });
 
   final VoidCallback onTap;
   final int index;
+  final String? type;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +34,22 @@ class CharacterCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _Image(
-                  index: index,
-                ),
+                if (type == 'ch')
+                  _Image(
+                    index: index,
+                  ),
+                if (type == 'loc' || type == 'ep')
+                  SizedBox(
+                    width: 100,
+                    height: 120,
+                    child: Center(
+                      child: Icon(
+                        type == 'loc' ? Icons.location_on : Icons.tv,
+                        size: 32,
+                        color: const Color(ColorPallete.title),
+                      ),
+                    ),
+                  ),
                 const SizedBox(
                   width: 12,
                 ),
@@ -102,6 +117,7 @@ class _Image extends StatelessWidget {
         child: FadeInImage.memoryNetwork(
           placeholder: kTransparentImage,
           image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+          fit: BoxFit.cover,
         ),
       ),
     );

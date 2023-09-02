@@ -19,10 +19,23 @@ class _DashboardViewState extends State<DashboardView> {
     EpisodesPage(),
   ];
 
-  void onChangeOption(int index) {
+  void onChangeOption({required int index}) {
     setState(() {
       currentIndex = index;
     });
+  }
+
+  String _getTitle({required int currentIndex}) {
+    switch (currentIndex) {
+      case 0:
+        return 'Characters';
+      case 1:
+        return 'Locations';
+      case 2:
+        return 'Episodes';
+      default:
+        return 'Rick & Morty';
+    }
   }
 
   @override
@@ -31,14 +44,14 @@ class _DashboardViewState extends State<DashboardView> {
       appBar: AppBar(
         backgroundColor: const Color(ColorPallete.secondary),
         title: Text(
-          'Rick & Morty',
+          _getTitle(currentIndex: currentIndex),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       body: screens.elementAt(currentIndex),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (index) => onChangeOption(index!),
+        onTap: (index) => onChangeOption(index: index!),
       ),
     );
   }
