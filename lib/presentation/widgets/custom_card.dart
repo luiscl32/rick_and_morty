@@ -4,16 +4,21 @@ import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({
-    super.key,
-    required this.onTap,
-    required this.index,
-    this.type = 'ch',
-  });
+  const CustomCard(
+      {super.key,
+      required this.onTap,
+      required this.index,
+      required this.type,
+      required this.name,
+      required this.description,
+      required this.image});
 
   final VoidCallback onTap;
   final int index;
-  final String? type;
+  final String type;
+  final String name;
+  final String description;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +38,19 @@ class CustomCard extends StatelessWidget {
             children: [
               if (type == 'ch')
                 _Image(
-                  index: index,
-                ),
-              if (type == 'loc' || type == 'ep') _icon(type: type),
+                  index: name,
+                  image: image!,
+                )
+              else
+                _icon(type: type),
               const SizedBox(
                 width: 12,
               ),
               _Description(
                 text: text,
-                type: type!,
+                type: type,
+                name: name,
+                description: description,
               )
             ],
           ),
@@ -78,36 +87,57 @@ class _icon extends StatelessWidget {
 class _Description extends StatelessWidget {
   const _Description({
     required this.text,
+    required this.name,
+    required this.description,
     required this.type,
   });
 
   final TextTheme text;
+  final String name;
+  final String description;
   final String type;
+
+  String _getTextByType() {
+    switch (type) {
+      case 'ch':
+        return 'Status:';
+      case 'loc':
+        return 'Type:';
+      case 'ep':
+        return 'Number:';
+      default:
+        return '';
+    }
+  }
+
+  Color _getColorByStatus() {
+    switch (description) {
+      case 'Alive':
+        return const Color(ColorPallete.alive);
+
+      case 'Dead':
+        return const Color(ColorPallete.dead);
+
+      default:
+        return const Color(ColorPallete.title);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    String _getTextByType() {
-      switch (type) {
-        case 'ch':
-          return 'Status:';
-        case 'loc':
-          return 'Type:';
-        case 'ep':
-          return 'Number:';
-        default:
-          return '';
-      }
-    }
-
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Rick Sanchez',
-            style: text.headlineSmall,
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: Text(
+              name,
+              style: text.titleLarge,
+              maxLines: 2,
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -123,14 +153,15 @@ class _Description extends StatelessWidget {
                   width: 10,
                   height: 10,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: const Color(ColorPallete.alive)),
+                    borderRadius: BorderRadius.circular(100),
+                    color: _getColorByStatus(),
+                  ),
                 ),
                 const SizedBox(
                   width: 4,
                 ),
                 Text(
-                  'alive',
+                  description,
                   style: text.bodyMedium!.copyWith(
                     color: const Color(ColorPallete.title),
                     fontWeight: FontWeight.w300,
@@ -140,12 +171,12 @@ class _Description extends StatelessWidget {
             )
           else
             Text(
-              'data',
+              description,
               style: text.bodyMedium!.copyWith(
                 color: const Color(ColorPallete.title),
                 fontWeight: FontWeight.w300,
               ),
-            )
+            ),
         ],
       ),
     );
@@ -153,11 +184,10 @@ class _Description extends StatelessWidget {
 }
 
 class _Image extends StatelessWidget {
-  const _Image({
-    required this.index,
-  });
+  const _Image({required this.index, required this.image});
 
-  final int index;
+  final String index;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +198,7 @@ class _Image extends StatelessWidget {
         height: 120,
         child: FadeInImage.memoryNetwork(
           placeholder: kTransparentImage,
-          image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+          image: image,
           fit: BoxFit.cover,
         ),
       ),

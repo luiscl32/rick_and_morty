@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ImageHeader extends StatelessWidget {
-  const ImageHeader({
-    super.key,
-  });
+  const ImageHeader({super.key, required this.image});
+
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,7 @@ class ImageHeader extends StatelessWidget {
       width: double.infinity,
       height: 300,
       child: FadeInImage.memoryNetwork(
-          fit: BoxFit.cover,
-          placeholder: kTransparentImage,
-          image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg"),
+          fit: BoxFit.cover, placeholder: kTransparentImage, image: image),
     );
   }
 }

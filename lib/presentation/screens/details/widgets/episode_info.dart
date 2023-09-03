@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/domain/models/episodes.dart';
 import 'package:rick_and_morty/presentation/screens/details/widgets/detail_widgets.dart';
 
 class EpisodeInfo extends StatelessWidget {
-  const EpisodeInfo({super.key});
+  const EpisodeInfo({
+    super.key,
+    required this.data,
+  });
+
+  final dynamic data;
 
   @override
   Widget build(BuildContext context) {
+    final _data = data as Episode;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,7 +24,7 @@ class EpisodeInfo extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Text(
-            'Name of character',
+            _data.name!,
             style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.center,
           ),
@@ -24,17 +32,18 @@ class EpisodeInfo extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        Subtitle(subTitle: 'Episode'),
-        Description(description: 'S0123'),
+        const Subtitle(subTitle: 'Episode'),
+        Description(description: _data.episode!),
         const SizedBox(
           height: 12,
         ),
-        Subtitle(subTitle: 'Air date'),
-        Description(description: 'C-137'),
+        const Subtitle(subTitle: 'Air date'),
+        Description(description: _data.airDate!),
         const SizedBox(
           height: 12,
         ),
-        Subtitle(subTitle: 'Characters')
+        const Subtitle(subTitle: 'Characters in this episode'),
+        Description(description: '${_data.airDate!.characters}'),
       ],
     );
   }

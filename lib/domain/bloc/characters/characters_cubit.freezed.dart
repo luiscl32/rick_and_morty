@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'character_cubit.dart';
+part of 'characters_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CharacterState {
+mixin _$CharactersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Character data) loaded,
+    required TResult Function(Characters data) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CharacterState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Character data)? loaded,
+    TResult? Function(Characters data)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CharacterState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Character data)? loaded,
+    TResult Function(Characters data)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,16 @@ mixin _$CharacterState {
 }
 
 /// @nodoc
-abstract class $CharacterStateCopyWith<$Res> {
-  factory $CharacterStateCopyWith(
-          CharacterState value, $Res Function(CharacterState) then) =
-      _$CharacterStateCopyWithImpl<$Res, CharacterState>;
+abstract class $CharactersStateCopyWith<$Res> {
+  factory $CharactersStateCopyWith(
+          CharactersState value, $Res Function(CharactersState) then) =
+      _$CharactersStateCopyWithImpl<$Res, CharactersState>;
 }
 
 /// @nodoc
-class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
-    implements $CharacterStateCopyWith<$Res> {
-  _$CharacterStateCopyWithImpl(this._value, this._then);
+class _$CharactersStateCopyWithImpl<$Res, $Val extends CharactersState>
+    implements $CharactersStateCopyWith<$Res> {
+  _$CharactersStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$CharacterStateCopyWithImpl<$Res, _$_Initial>
+    extends _$CharactersStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -108,7 +108,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'CharacterState.initial()';
+    return 'CharactersState.initial()';
   }
 
   @override
@@ -125,7 +125,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Character data) loaded,
+    required TResult Function(Characters data) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -136,7 +136,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Character data)? loaded,
+    TResult? Function(Characters data)? loaded,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -147,7 +147,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Character data)? loaded,
+    TResult Function(Characters data)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -195,7 +195,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements CharacterState {
+abstract class _Initial implements CharactersState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -208,7 +208,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$CharacterStateCopyWithImpl<$Res, _$_Loading>
+    extends _$CharactersStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -221,7 +221,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'CharacterState.loading()';
+    return 'CharactersState.loading()';
   }
 
   @override
@@ -238,7 +238,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Character data) loaded,
+    required TResult Function(Characters data) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -249,7 +249,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Character data)? loaded,
+    TResult? Function(Characters data)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -260,7 +260,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Character data)? loaded,
+    TResult Function(Characters data)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -308,7 +308,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements CharacterState {
+abstract class _Loading implements CharactersState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -317,12 +317,12 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Character data});
+  $Res call({Characters data});
 }
 
 /// @nodoc
 class __$$_LoadedCopyWithImpl<$Res>
-    extends _$CharacterStateCopyWithImpl<$Res, _$_Loaded>
+    extends _$CharactersStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
@@ -336,7 +336,7 @@ class __$$_LoadedCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Character,
+              as Characters,
     ));
   }
 }
@@ -347,11 +347,11 @@ class _$_Loaded implements _Loaded {
   const _$_Loaded({required this.data});
 
   @override
-  final Character data;
+  final Characters data;
 
   @override
   String toString() {
-    return 'CharacterState.loaded(data: $data)';
+    return 'CharactersState.loaded(data: $data)';
   }
 
   @override
@@ -376,7 +376,7 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Character data) loaded,
+    required TResult Function(Characters data) loaded,
     required TResult Function() error,
   }) {
     return loaded(data);
@@ -387,7 +387,7 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Character data)? loaded,
+    TResult? Function(Characters data)? loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(data);
@@ -398,7 +398,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Character data)? loaded,
+    TResult Function(Characters data)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -446,10 +446,10 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements CharacterState {
-  const factory _Loaded({required final Character data}) = _$_Loaded;
+abstract class _Loaded implements CharactersState {
+  const factory _Loaded({required final Characters data}) = _$_Loaded;
 
-  Character get data;
+  Characters get data;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -463,7 +463,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$CharacterStateCopyWithImpl<$Res, _$_Error>
+    extends _$CharactersStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -476,7 +476,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'CharacterState.error()';
+    return 'CharactersState.error()';
   }
 
   @override
@@ -493,7 +493,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Character data) loaded,
+    required TResult Function(Characters data) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -504,7 +504,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Character data)? loaded,
+    TResult? Function(Characters data)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -515,7 +515,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Character data)? loaded,
+    TResult Function(Characters data)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -563,6 +563,6 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements CharacterState {
+abstract class _Error implements CharactersState {
   const factory _Error() = _$_Error;
 }

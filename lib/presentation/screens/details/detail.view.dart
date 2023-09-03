@@ -7,21 +7,29 @@ class DetailView extends StatelessWidget {
     Key? key,
     required this.index,
     required this.type,
+    required this.data,
   }) : super(key: key);
 
-  final int index;
+  final String index;
   final String type;
+  final dynamic data;
 
   @override
   Widget build(BuildContext context) {
     Widget _getScreenByType() {
       switch (type) {
         case 'ch':
-          return const CharacterInfo();
+          return CharacterInfo(
+            data: data,
+          );
         case 'loc':
-          return const LocationInfo();
+          return LocationInfo(
+            data: data,
+          );
         case 'ep':
-          return const EpisodeInfo();
+          return EpisodeInfo(
+            data: data,
+          );
         default:
           return Container();
       }
@@ -36,11 +44,10 @@ class DetailView extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: CircleAvatar(
-          radius: 30,
-          backgroundColor: Color(ColorPallete.secondary),
-          child: IconButton(
-              onPressed: onGoBack, icon: const Icon(Icons.arrow_back)),
+        leading: IconButton(
+          onPressed: onGoBack,
+          icon: const Icon(Icons.arrow_back),
+          color: const Color(ColorPallete.secondary),
         ),
       ),
       body: SizedBox(
@@ -52,7 +59,7 @@ class DetailView extends StatelessWidget {
               if (type == 'ch')
                 Hero(
                   tag: index,
-                  child: const ImageHeader(),
+                  child: ImageHeader(image: data.image),
                 )
               else
                 IconHeader(type: type),

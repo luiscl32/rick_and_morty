@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/domain/models/characters.dart';
 import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:rick_and_morty/presentation/screens/details/widgets/detail_widgets.dart';
 
 class CharacterInfo extends StatelessWidget {
   const CharacterInfo({
     super.key,
+    required this.data,
   });
+
+  final dynamic data;
 
   @override
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
+
+    final _data = data as Character;
+
+    Color getStatus() {
+      switch (_data.status) {
+        case 'Alive':
+          return const Color(ColorPallete.alive);
+        case 'Dead':
+          return const Color(ColorPallete.dead);
+        default:
+          return const Color(ColorPallete.title);
+      }
+    }
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -21,7 +38,7 @@ class CharacterInfo extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Text(
-            'Name of character',
+            _data.name!,
             style: text.headlineSmall,
             textAlign: TextAlign.center,
           ),
@@ -30,14 +47,14 @@ class CharacterInfo extends StatelessWidget {
           height: 12,
         ),
         const Subtitle(
-          subTitle: 'Last know location:',
+          subTitle: 'Location',
         ),
-        const Description(description: 'location'),
+        Description(description: _data.location!.name!),
         const SizedBox(
           height: 12,
         ),
         const Subtitle(
-          subTitle: 'Status:',
+          subTitle: 'Status',
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -47,14 +64,13 @@ class CharacterInfo extends StatelessWidget {
               width: 10,
               height: 10,
               decoration: BoxDecoration(
-                  color: const Color(ColorPallete.alive),
-                  borderRadius: BorderRadius.circular(100)),
+                  color: getStatus(), borderRadius: BorderRadius.circular(100)),
             ),
             const SizedBox(
               width: 5,
             ),
             Text(
-              'alive - human',
+              '${_data.status} - ${_data.species}',
               style: text.bodyLarge,
             )
           ],
@@ -63,16 +79,16 @@ class CharacterInfo extends StatelessWidget {
           height: 12,
         ),
         const Subtitle(
-          subTitle: 'Gender:',
+          subTitle: 'Gender',
         ),
-        Description(description: 'Male'),
+        Description(description: _data.gender!),
         const SizedBox(
           height: 12,
         ),
         const Subtitle(
-          subTitle: 'Episodes:',
+          subTitle: 'Episodes where appears',
         ),
-        Description(description: 'adasdadgad')
+        Description(description: '${_data.episode!.length}')
       ],
     );
   }

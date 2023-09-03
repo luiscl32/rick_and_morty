@@ -7,10 +7,12 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments as Map;
+    final data = args['data'];
 
     return DetailView(
-      index: 1,
+      index: data.name,
       type: args['type'],
+      data: data,
     );
   }
 }
