@@ -47,7 +47,7 @@ class DetailView extends StatelessWidget {
         leading: IconButton(
           onPressed: onGoBack,
           icon: const Icon(Icons.arrow_back),
-          color: const Color(ColorPallete.secondary),
+          color: const Color(ColorPallete.title),
         ),
       ),
       body: SizedBox(

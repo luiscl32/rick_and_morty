@@ -42,7 +42,8 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(ColorPallete.secondary),
+        elevation: 0,
+        backgroundColor: const Color(ColorPallete.primary),
         title: Text(
           _getTitle(currentIndex: currentIndex),
           style: Theme.of(context).textTheme.headlineSmall,

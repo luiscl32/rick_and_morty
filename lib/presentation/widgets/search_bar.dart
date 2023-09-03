@@ -10,26 +10,27 @@ class CustomSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController ctrl = TextEditingController();
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        width: double.infinity,
-        color: const Color(ColorPallete.title),
-        height: 48,
-        child: TextField(
-          controller: ctrl,
-          onChanged: (value) {
-            onSearch(value);
-          },
-          decoration: const InputDecoration(
-            border: InputBorder.none,
-            suffixIcon: Icon(
-              Icons.search,
-              color: Color(ColorPallete.primary),
-            ),
-            hintText: 'Search',
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(ColorPallete.secondary),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      width: double.infinity,
+      height: 48,
+      child: TextField(
+        controller: ctrl,
+        onChanged: (value) {
+          onSearch(value);
+        },
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintStyle: TextStyle(color: Color(ColorPallete.subTitle)),
+          suffixIcon: Icon(
+            Icons.search,
+            color: Color(ColorPallete.subTitle),
           ),
+          hintText: 'Search',
         ),
       ),
     );
