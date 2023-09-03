@@ -16,5 +16,13 @@ La aplicación ofrece las siguientes funcionalidades:
 - **Sección de Descarga**: Posibilita la descarga de contenido relacionado con la serie.
 
 ## Capturas de Pantalla
+<img width="440" alt="Screenshot 2023-09-03 at 5 18 48 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/2fffe8b5-005b-45d8-96c9-b37cfb5362ce">
+<img width="436" alt="Screenshot 2023-09-03 at 5 19 14 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/9b93263e-5b08-4068-9af4-76f148d8e2d3">
+<img width="433" alt="Screenshot 2023-09-03 at 5 19 31 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/0c0118ff-7c92-4249-9805-c5ffdde924d5">
+<img width="389" alt="Screenshot 2023-09-03 at 5 19 44 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/509584b5-1bb4-4805-bac4-e4a7147cb2ac">
+<img width="399" alt="Screenshot 2023-09-03 at 5 20 04 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/efed5c19-d8b8-4c1d-92f7-fd7c8eb20658">
+<img width="383" alt="Screenshot 2023-09-03 at 5 20 30 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/06116ec6-12d2-4271-a3c1-1b2cc572f2f0">
 
-## Instalación
+## Descargar APK 
+### diawi
+https://i.diawi.com/ibsqvs
