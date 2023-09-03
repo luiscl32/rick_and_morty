@@ -28,4 +28,11 @@ class LocationRepository extends AbstractLocationRepository {
     final Locations data = Locations.fromJson(res.data);
     return data;
   }
+
+  @override
+  Future<Locations> onFetchMoreLocations({required int page}) async {
+    final Response res = await dio.get('$locationUrl/?page=$page');
+    final Locations data = Locations.fromJson(res.data);
+    return data;
+  }
 }

@@ -5,4 +5,5 @@ abstract class AbstractEpisodeRepository {
   Future<Episodes> onSearchEpisodes({required String search});
   Future<Episodes> onFilterEpisodes(
       {required String search, required String filterType});
+  Future<Episodes> onFetchMoreEpisodes({required int page});
 }

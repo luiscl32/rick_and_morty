@@ -7,8 +7,28 @@ import 'package:rick_and_morty/presentation/widgets/filter_btn.dart';
 import 'package:rick_and_morty/presentation/widgets/widgets.dart';
 import 'package:rick_and_morty/router.dart';
 
-class CharactersView extends StatelessWidget {
+class CharactersView extends StatefulWidget {
   const CharactersView({Key? key}) : super(key: key);
+
+  @override
+  State<CharactersView> createState() => _CharactersViewState();
+}
+
+class _CharactersViewState extends State<CharactersView> {
+  int page = 1;
+  final ScrollController controller = ScrollController();
+
+  @override
+  void initState() {
+    controller.addListener(() {
+      if (controller.position.pixels == controller.position.maxScrollExtent) {
+        setState(() {
+          page = page + 1;
+        });
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +56,23 @@ class CharactersView extends StatelessWidget {
       body: BlocBuilder<CharactersCubit, CharactersState>(
         builder: (context, state) {
           return state.maybeWhen(
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
             orElse: () => Container(),
             loaded: (data) {
               return Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: CustomScrollView(
+                  controller: controller,
                   physics: const BouncingScrollPhysics(),
                   slivers: [
                     SliverAppBar(
-                      backgroundColor: Color(ColorPallete.primary),
+                      backgroundColor: const Color(ColorPallete.primary),
                       flexibleSpace: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text('Filter by'),
+                          const Text('Filter by'),
                           FilterButton(
                             type: 'ch',
                             onFilter: (
@@ -60,26 +84,28 @@ class CharactersView extends StatelessWidget {
                       ),
                     ),
                     SliverList.separated(
-                        itemCount: data.results!.length,
-                        itemBuilder: (_, index) {
-                          final Character _data = data.results![index];
+                      itemCount: data.results!.length,
+                      itemBuilder: (_, index) {
+                        final Character _data = data.results![index];
 
-                          final String name = _data.name ?? 'No name Found';
-                          final String status = _data.status ?? 'Unknown';
-                          final String image = _data.image!;
+                        final String name = _data.name ?? 'No name Found';
+                        final String status = _data.status ?? 'Unknown';
+                        final String image = _data.image!;
 
-                          return CustomCard(
-                            onTap: () => _onNavigateToDetail(data: _data),
-                            index: index,
-                            name: name,
-                            image: image,
-                            description: status,
-                            type: 'ch',
-                          );
-                        },
-                        separatorBuilder: (_, __) => const SizedBox(
-                              height: 12,
-                            ))
+                        return CustomCard(
+                          onTap: () => _onNavigateToDetail(data: _data),
+                          index: index,
+                          name: name,
+                          image: image,
+                          description: status,
+                          type: 'ch',
+                        );
+                      },
+                      separatorBuilder: (_, __) => const SizedBox(
+                        height: 12,
+                      ),
+                    ),
+                    const ListLoader()
                   ],
                 ),
               );
