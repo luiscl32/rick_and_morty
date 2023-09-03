@@ -8,7 +8,7 @@ class ScreenPaths {
   static const String characters = '/characters';
   static const String locations = '/locations';
   static const String episodes = '/episodes';
-  static const String characterDetail = '/character/detail';
+  static const String detail = '/detail';
 }
 
 class CustomRouter {
@@ -19,6 +19,6 @@ class CustomRouter {
     ScreenPaths.characters: (context) => const CharactersPage(),
     ScreenPaths.locations: (context) => const LocationsPage(),
     ScreenPaths.episodes: (context) => const EpisodesPage(),
-    ScreenPaths.characterDetail: (context) => const CharacterDetailPage(),
+    ScreenPaths.detail: (context) => const DetailPage(),
   };
 }

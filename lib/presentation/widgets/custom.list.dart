@@ -13,11 +13,8 @@ class CustomList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _onNavigateToDetail() {
-      switch (type) {
-        case 'ch':
-          Navigator.pushNamed(context, ScreenPaths.characterDetail);
-        default:
-      }
+      Navigator.pushNamed(context, ScreenPaths.detail,
+          arguments: {'type': type});
     }
 
     return Padding(
