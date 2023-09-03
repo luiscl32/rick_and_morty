@@ -8,15 +8,23 @@ class LocationRepository extends AbstractLocationRepository {
   final String locationUrl = '${ApiConfig.apiUrl}/location';
 
   @override
-  Future<Location> onFetchLocationDetail({required int id}) async {
-    final Response res = await dio.get('$locationUrl/$id');
-    final Location data = Location.fromJson(res.data);
+  Future<Locations> onFetchLocations() async {
+    final Response res = await dio.get(locationUrl);
+    final Locations data = Locations.fromJson(res.data);
     return data;
   }
 
   @override
-  Future<Locations> onFetchLocations() async {
-    final Response res = await dio.get(locationUrl);
+  Future<Locations> onFilterLocations(
+      {required String search, required String filterType}) async {
+    final Response res = await dio.get('$locationUrl/?$filterType=$search');
+    final Locations data = Locations.fromJson(res.data);
+    return data;
+  }
+
+  @override
+  Future<Locations> onSearchLocations({required String search}) async {
+    final Response res = await dio.get('$locationUrl/?name=$search');
     final Locations data = Locations.fromJson(res.data);
     return data;
   }

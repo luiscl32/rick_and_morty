@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/domain/bloc/locations/locations_cubit.dart';
 import 'package:rick_and_morty/domain/models/Locations.dart' as loc;
 import 'package:rick_and_morty/domain/models/locations.dart';
+import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:rick_and_morty/presentation/widgets/widgets.dart';
 import 'package:rick_and_morty/router.dart';
 
@@ -17,7 +18,17 @@ class LocationsView extends StatelessWidget {
           arguments: {'type': 'loc', 'data': data});
     }
 
+    void _onSearch({required String search}) {
+      context.read<LocationsCubit>().searchLocations(search: search);
+    }
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(ColorPallete.primary),
+        title: CustomSearch(
+          onSearch: (search) => _onSearch(search: search),
+        ),
+      ),
       body: BlocBuilder<LocationsCubit, LocationsState>(
         builder: (context, state) {
           return state.maybeWhen(

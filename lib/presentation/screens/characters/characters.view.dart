@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/domain/bloc/characters/characters_cubit.dart';
 import 'package:rick_and_morty/domain/models/characters.dart';
+import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:rick_and_morty/presentation/widgets/widgets.dart';
 import 'package:rick_and_morty/router.dart';
 
@@ -15,14 +16,24 @@ class CharactersView extends StatelessWidget {
           arguments: {'type': 'ch', 'data': data});
     }
 
+    void _onSearch({required String search}) {
+      context.read<CharactersCubit>().searchCharacters(search: search);
+    }
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(ColorPallete.primary),
+        title: CustomSearch(
+          onSearch: (search) => _onSearch(search: search),
+        ),
+      ),
       body: BlocBuilder<CharactersCubit, CharactersState>(
         builder: (context, state) {
           return state.maybeWhen(
             orElse: () => Container(),
             loaded: (data) {
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: CustomScrollView(
                   physics: const BouncingScrollPhysics(),
                   slivers: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/domain/bloc/episodes/episodes_cubit.dart';
 import 'package:rick_and_morty/domain/models/episodes.dart';
+import 'package:rick_and_morty/presentation/theme/color_pallete.dart';
 import 'package:rick_and_morty/presentation/widgets/widgets.dart';
 import 'package:rick_and_morty/router.dart';
 
@@ -15,40 +16,52 @@ class EpisodesView extends StatelessWidget {
           arguments: {'type': 'ep', 'data': data});
     }
 
-    return Scaffold(body: BlocBuilder<EpisodesCubit, EpisodesState>(
-      builder: (context, state) {
-        return state.maybeWhen(
-          orElse: () => Container(),
-          loaded: (data) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverList.separated(
-                    itemCount: data.results!.length,
-                    itemBuilder: (_, index) {
-                      final Episode _data = data.results![index];
+    void _onSearch({required String search}) {
+      context.read<EpisodesCubit>().searchEpisodes(search: search);
+    }
 
-                      final String name = _data.name ?? 'No name Found';
-                      final String episodeNumber = _data.episode ?? 'unknown';
-
-                      return CustomCard(
-                        onTap: () => _onNavigateToDetail(data: _data),
-                        index: index,
-                        name: name,
-                        image: null,
-                        description: episodeNumber,
-                        type: 'ep',
-                      );
-                    },
-                    separatorBuilder: (_, __) => const SizedBox(
-                          height: 12,
-                        ))
-              ],
-            ),
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(ColorPallete.primary),
+          title: CustomSearch(
+            onSearch: (search) => _onSearch(search: search),
           ),
-        );
-      },
-    ));
+        ),
+        body: BlocBuilder<EpisodesCubit, EpisodesState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () => Container(),
+              loaded: (data) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  slivers: [
+                    SliverList.separated(
+                        itemCount: data.results!.length,
+                        itemBuilder: (_, index) {
+                          final Episode _data = data.results![index];
+
+                          final String name = _data.name ?? 'No name Found';
+                          final String episodeNumber =
+                              _data.episode ?? 'unknown';
+
+                          return CustomCard(
+                            onTap: () => _onNavigateToDetail(data: _data),
+                            index: index,
+                            name: name,
+                            image: null,
+                            description: episodeNumber,
+                            type: 'ep',
+                          );
+                        },
+                        separatorBuilder: (_, __) => const SizedBox(
+                              height: 12,
+                            ))
+                  ],
+                ),
+              ),
+            );
+          },
+        ));
   }
 }

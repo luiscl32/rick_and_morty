@@ -20,4 +20,24 @@ class LocationsCubit extends Cubit<LocationsState> {
       emit(const LocationsState.error());
     });
   }
+
+  void searchLocations({required String search}) {
+    emit(const LocationsState.loading());
+    repository.onSearchLocations(search: search).then((data) {
+      emit(LocationsState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const LocationsState.error());
+    });
+  }
+
+  void filterLocations({required String search, required String filterType}) {
+    emit(const LocationsState.loading());
+    repository
+        .onFilterLocations(filterType: filterType, search: search)
+        .then((data) {
+      emit(LocationsState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const LocationsState.error());
+    });
+  }
 }

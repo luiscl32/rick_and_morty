@@ -19,4 +19,24 @@ class CharactersCubit extends Cubit<CharactersState> {
       emit(const CharactersState.error());
     });
   }
+
+  void searchCharacters({required String search}) {
+    emit(const CharactersState.loading());
+    repository.onSearchCharacter(search: search).then((data) {
+      emit(CharactersState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const CharactersState.error());
+    });
+  }
+
+  void filterCharacters({required String search, required String filterType}) {
+    emit(const CharactersState.loading());
+    repository
+        .onFilterCharacter(filterType: filterType, search: search)
+        .then((data) {
+      emit(CharactersState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const CharactersState.error());
+    });
+  }
 }

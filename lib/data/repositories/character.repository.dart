@@ -15,9 +15,17 @@ class CharacterRepository extends AbstractCharacterRepository {
   }
 
   @override
-  Future<Character> onFetchCharacterDetail({required int id}) async {
-    final Response res = await dio.get('$characterUrl/$id');
-    final Character data = Character.fromJson(res.data);
+  Future<Characters> onSearchCharacter({required String search}) async {
+    final Response res = await dio.get('$characterUrl?name=$search');
+    final Characters data = Characters.fromJson(res.data);
+    return data;
+  }
+
+  @override
+  Future<Characters> onFilterCharacter(
+      {required String search, required String filterType}) async {
+    final Response res = await dio.get('$characterUrl?$filterType=$search');
+    final Characters data = Characters.fromJson(res.data);
     return data;
   }
 }

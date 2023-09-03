@@ -19,4 +19,24 @@ class EpisodesCubit extends Cubit<EpisodesState> {
       emit(const EpisodesState.error());
     });
   }
+
+  void searchEpisodes({required String search}) {
+    emit(const EpisodesState.loading());
+    repository.onSearchEpisodes(search: search).then((data) {
+      emit(EpisodesState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const EpisodesState.error());
+    });
+  }
+
+  void filterEpisodes({required String search, required String filterType}) {
+    emit(const EpisodesState.loading());
+    repository
+        .onFilterEpisodes(filterType: filterType, search: search)
+        .then((data) {
+      emit(EpisodesState.loaded(data: data));
+    }).catchError((onError) {
+      emit(const EpisodesState.error());
+    });
+  }
 }
