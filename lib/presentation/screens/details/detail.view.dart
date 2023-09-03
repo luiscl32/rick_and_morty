@@ -32,10 +32,16 @@ class DetailView extends StatelessWidget {
     }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-            onPressed: onGoBack, icon: const Icon(Icons.arrow_back_ios)),
+        leading: CircleAvatar(
+          radius: 30,
+          backgroundColor: Color(ColorPallete.secondary),
+          child: IconButton(
+              onPressed: onGoBack, icon: const Icon(Icons.arrow_back)),
+        ),
       ),
       body: SizedBox(
         width: double.infinity,
