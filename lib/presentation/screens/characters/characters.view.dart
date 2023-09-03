@@ -7,28 +7,8 @@ import 'package:rick_and_morty/presentation/widgets/filter_btn.dart';
 import 'package:rick_and_morty/presentation/widgets/widgets.dart';
 import 'package:rick_and_morty/router.dart';
 
-class CharactersView extends StatefulWidget {
+class CharactersView extends StatelessWidget {
   const CharactersView({Key? key}) : super(key: key);
-
-  @override
-  State<CharactersView> createState() => _CharactersViewState();
-}
-
-class _CharactersViewState extends State<CharactersView> {
-  int page = 1;
-  final ScrollController controller = ScrollController();
-
-  @override
-  void initState() {
-    controller.addListener(() {
-      if (controller.position.pixels == controller.position.maxScrollExtent) {
-        setState(() {
-          page = page + 1;
-        });
-      }
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +44,6 @@ class _CharactersViewState extends State<CharactersView> {
               return Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: CustomScrollView(
-                  controller: controller,
                   physics: const BouncingScrollPhysics(),
                   slivers: [
                     SliverAppBar(
@@ -105,7 +84,6 @@ class _CharactersViewState extends State<CharactersView> {
                         height: 12,
                       ),
                     ),
-                    const ListLoader()
                   ],
                 ),
               );

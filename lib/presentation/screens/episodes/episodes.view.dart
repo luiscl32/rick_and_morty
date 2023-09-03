@@ -39,6 +39,9 @@ class EpisodesView extends StatelessWidget {
           builder: (context, state) {
             return state.maybeWhen(
               orElse: () => Container(),
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
               loaded: (data) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: CustomScrollView(

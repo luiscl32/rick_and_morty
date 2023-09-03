@@ -40,6 +40,9 @@ class LocationsView extends StatelessWidget {
       body: BlocBuilder<LocationsCubit, LocationsState>(
         builder: (context, state) {
           return state.maybeWhen(
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
             loaded: (data) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomScrollView(

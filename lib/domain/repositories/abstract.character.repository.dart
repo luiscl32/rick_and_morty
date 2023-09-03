@@ -6,5 +6,4 @@ abstract class AbstractCharacterRepository {
   Future<Characters> onSearchCharacter({required String search});
   Future<Characters> onFilterCharacter(
       {required String search, required String filterType});
-  Future<Characters> onFetchMoreCharacter({required int page});
 }

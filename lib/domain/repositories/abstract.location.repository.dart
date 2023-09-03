@@ -5,5 +5,4 @@ abstract class AbstractLocationRepository {
   Future<Locations> onSearchLocations({required String search});
   Future<Locations> onFilterLocations(
       {required String search, required String filterType});
-  Future<Locations> onFetchMoreLocations({required int page});
 }

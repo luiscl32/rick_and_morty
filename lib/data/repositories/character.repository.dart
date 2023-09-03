@@ -28,11 +28,4 @@ class CharacterRepository extends AbstractCharacterRepository {
     final Characters data = Characters.fromJson(res.data);
     return data;
   }
-
-  @override
-  Future<Characters> onFetchMoreCharacter({required int page}) async {
-    final Response res = await dio.get('$characterUrl?page=$page');
-    final Characters data = Characters.fromJson(res.data);
-    return data;
-  }
 }

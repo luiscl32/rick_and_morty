@@ -28,11 +28,4 @@ class EpisodeRepository extends AbstractEpisodeRepository {
     final Episodes data = Episodes.fromJson(res.data);
     return data;
   }
-
-  @override
-  Future<Episodes> onFetchMoreEpisodes({required int page}) async {
-    final Response res = await dio.get('$episodeUrl?page=$page');
-    final Episodes data = Episodes.fromJson(res.data);
-    return data;
-  }
 }
