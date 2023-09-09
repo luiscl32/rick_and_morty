@@ -24,5 +24,5 @@ La aplicación ofrece las siguientes funcionalidades:
 <img width="383" alt="Screenshot 2023-09-03 at 5 20 30 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/06116ec6-12d2-4271-a3c1-1b2cc572f2f0">
 
 ## Descargar APK 
-### diawi
-https://i.diawi.com/ibsqvs
+### diawi (Link updated)
+https://i.diawi.com/MTe8if
