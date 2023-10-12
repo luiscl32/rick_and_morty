@@ -25,4 +25,4 @@ La aplicación ofrece las siguientes funcionalidades:
 
 ## Descargar APK 
 ### diawi (Link updated)
-https://i.diawi.com/MTe8if
+https://i.diawi.com/hABPsd
