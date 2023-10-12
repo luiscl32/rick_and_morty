@@ -12,8 +12,6 @@ La aplicación ofrece las siguientes funcionalidades:
 - **Pantalla de Detalle**: Permite ver información detallada sobre cada elemento de la lista.
 - **Búsqueda Avanzada**: Incluye un motor de búsqueda que permite buscar personajes, ubicaciones o episodios por nombre.
 - **Filtros Personalizados**: Ofrece un botón de filtro para la lista de personajes y ubicaciones.
-- **Sección de Imágenes**: Proporciona imágenes relacionadas con la serie.
-- **Sección de Descarga**: Posibilita la descarga de contenido relacionado con la serie.
 
 ## Capturas de Pantalla
 <img width="440" alt="Screenshot 2023-09-03 at 5 18 48 PM" src="https://github.com/luiscl32/rick_and_morty/assets/8031026/2fffe8b5-005b-45d8-96c9-b37cfb5362ce">
